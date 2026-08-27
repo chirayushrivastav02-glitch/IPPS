@@ -50,7 +50,7 @@ const kpiCards = [
 ];
 
 const CUSTOM_TOOLTIP_STYLE = {
-  background: '#0a1628', border: '1px solid rgba(255,255,255,0.1)',
+  background: '#ffffff', border: '1px solid rgba(10,31,60,0.12)',
   borderRadius: 8, fontSize: 12, color: '#e8f0fe',
 };
 
@@ -63,7 +63,7 @@ export default function GovDashboard() {
     <div className="page-enter">
       {/* Hero Dashboard Card */}
       <div style={{
-        background: 'linear-gradient(135deg, var(--navy-800) 0%, rgba(13,148,136,0.12) 100%)',
+        background: 'linear-gradient(135deg, #ffffff 0%, rgba(13,148,136,0.10) 60%, rgba(6,182,212,0.12) 100%)',
         border: '1px solid var(--border-accent)',
         borderRadius: 'var(--radius-xl)',
         padding: '32px',
@@ -93,7 +93,7 @@ export default function GovDashboard() {
           <h1 style={{
             fontFamily: 'var(--font-display)',
             fontSize: 'clamp(24px, 3vw, 40px)',
-            fontWeight: 900, color: 'white', lineHeight: 1.1, marginBottom: 12,
+            fontWeight: 900, color: 'var(--text-primary)', lineHeight: 1.1, marginBottom: 12,
           }}>
             From problem statements<br />to scaled public impact.
           </h1>
@@ -111,7 +111,7 @@ export default function GovDashboard() {
             </button>
             <button
               className="btn btn-lg"
-              style={{ background: 'linear-gradient(135deg, #0d9488, #06b6d4)', color: 'white', boxShadow: '0 2px 16px rgba(13,148,136,0.35)' }}
+              style={{ background: 'linear-gradient(135deg, #0d9488, #06b6d4)', color: '#ffffff', boxShadow: '0 2px 16px rgba(13,148,136,0.35)' }}
               onClick={() => navigate('/gov/matching')}
             >
               <Cpu size={16} /> Run Matching Engine
@@ -126,9 +126,9 @@ export default function GovDashboard() {
               { label: 'TIME TO CONTRACT', value: stats.timeToContract },
               { label: 'BENEFICIARIES REACHED', value: stats.beneficiariesReached },
             ].map(m => (
-              <div key={m.label} style={{ borderLeft: '2px solid rgba(255,255,255,0.1)', paddingLeft: 16 }}>
+              <div key={m.label} style={{ borderLeft: '2px solid rgba(10,31,60,0.12)', paddingLeft: 16 }}>
                 <div style={{ fontSize: 10, color: 'var(--text-muted)', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 4 }}>{m.label}</div>
-                <div style={{ fontFamily: 'var(--font-display)', fontSize: 22, fontWeight: 800, color: 'white' }}>{m.value}</div>
+                <div style={{ fontFamily: 'var(--font-display)', fontSize: 22, fontWeight: 800, color: 'var(--text-primary)' }}>{m.value}</div>
               </div>
             ))}
           </div>
@@ -155,13 +155,13 @@ export default function GovDashboard() {
         <div className="card">
           <div className="card-header">
             <div>
-              <div style={{ fontWeight: 700, color: 'white', fontSize: 15 }}>Challenges by Sector</div>
+              <div style={{ fontWeight: 700, color: 'var(--text-primary)', fontSize: 15 }}>Challenges by Sector</div>
               <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>Distribution of active challenges</div>
             </div>
           </div>
           <ResponsiveContainer width="100%" height={200}>
             <BarChart data={sectorData} margin={{ top: 5, right: 10, left: -20, bottom: 5 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
+              <CartesianGrid strokeDasharray="3 3" stroke="rgba(10,31,60,0.07)" />
               <XAxis dataKey="name" tick={{ fill: '#64748b', fontSize: 11 }} />
               <YAxis tick={{ fill: '#64748b', fontSize: 11 }} />
               <Tooltip contentStyle={CUSTOM_TOOLTIP_STYLE} />
@@ -178,7 +178,7 @@ export default function GovDashboard() {
         <div className="card">
           <div className="card-header">
             <div>
-              <div style={{ fontWeight: 700, color: 'white', fontSize: 15 }}>Application Trend</div>
+              <div style={{ fontWeight: 700, color: 'var(--text-primary)', fontSize: 15 }}>Application Trend</div>
               <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>Last 8 months submissions</div>
             </div>
             <Activity size={18} style={{ color: 'var(--teal-400)' }} />
@@ -191,7 +191,7 @@ export default function GovDashboard() {
                   <stop offset="95%" stopColor="#0d9488" stopOpacity={0} />
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
+              <CartesianGrid strokeDasharray="3 3" stroke="rgba(10,31,60,0.07)" />
               <XAxis dataKey="month" tick={{ fill: '#64748b', fontSize: 11 }} />
               <YAxis tick={{ fill: '#64748b', fontSize: 11 }} />
               <Tooltip contentStyle={CUSTOM_TOOLTIP_STYLE} />
@@ -207,18 +207,18 @@ export default function GovDashboard() {
         <div className="card">
           <div className="card-header">
             <div>
-              <div style={{ fontWeight: 700, color: 'white', fontSize: 15 }}>Pilot Performance</div>
+              <div style={{ fontWeight: 700, color: 'var(--text-primary)', fontSize: 15 }}>Pilot Performance</div>
               <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>Target vs Actual KPI metrics</div>
             </div>
             <TrendingUp size={18} style={{ color: 'var(--green-400)' }} />
           </div>
           <ResponsiveContainer width="100%" height={180}>
             <BarChart data={pilotPerformanceData} margin={{ top: 5, right: 10, left: -20, bottom: 5 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
+              <CartesianGrid strokeDasharray="3 3" stroke="rgba(10,31,60,0.07)" />
               <XAxis dataKey="name" tick={{ fill: '#64748b', fontSize: 10 }} />
               <YAxis tick={{ fill: '#64748b', fontSize: 11 }} />
               <Tooltip contentStyle={CUSTOM_TOOLTIP_STYLE} />
-              <Bar dataKey="target" fill="rgba(255,255,255,0.1)" radius={[3, 3, 0, 0]} name="Target" />
+              <Bar dataKey="target" fill="rgba(10,31,60,0.12)" radius={[3, 3, 0, 0]} name="Target" />
               <Bar dataKey="actual" fill="#0d9488" radius={[3, 3, 0, 0]} name="Actual" />
             </BarChart>
           </ResponsiveContainer>
@@ -227,7 +227,7 @@ export default function GovDashboard() {
         {/* Quick Actions */}
         <div className="card">
           <div className="card-header">
-            <div style={{ fontWeight: 700, color: 'white', fontSize: 15 }}>Quick Actions</div>
+            <div style={{ fontWeight: 700, color: 'var(--text-primary)', fontSize: 15 }}>Quick Actions</div>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
             {[
@@ -242,12 +242,12 @@ export default function GovDashboard() {
                 onClick={() => navigate(action.path)}
                 style={{
                   display: 'flex', alignItems: 'center', gap: 12, padding: '10px 12px',
-                  background: 'rgba(255,255,255,0.03)', borderRadius: 'var(--radius-md)',
+                  background: 'rgba(10,31,60,0.04)', borderRadius: 'var(--radius-md)',
                   cursor: 'pointer', transition: 'all var(--transition-fast)',
                   border: '1px solid transparent',
                 }}
-                onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'; }}
-                onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.03)'; e.currentTarget.style.borderColor = 'transparent'; }}
+                onMouseEnter={e => { e.currentTarget.style.background = 'rgba(10,31,60,0.06)'; e.currentTarget.style.borderColor = 'rgba(10,31,60,0.10)'; }}
+                onMouseLeave={e => { e.currentTarget.style.background = 'rgba(10,31,60,0.04)'; e.currentTarget.style.borderColor = 'transparent'; }}
               >
                 {action.count !== null && (
                   <span style={{
@@ -263,10 +263,10 @@ export default function GovDashboard() {
             ))}
           </div>
 
-          <div style={{ marginTop: 20, padding: '12px', background: 'rgba(255,255,255,0.02)', borderRadius: 'var(--radius-md)', borderLeft: '3px solid var(--teal-600)' }}>
+          <div style={{ marginTop: 20, padding: '12px', background: 'rgba(10,31,60,0.03)', borderRadius: 'var(--radius-md)', borderLeft: '3px solid var(--teal-600)' }}>
             <div style={{ fontSize: 10, fontWeight: 600, color: 'var(--teal-400)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 4 }}>DID YOU KNOW?</div>
             <div style={{ fontSize: 12.5, color: 'var(--text-secondary)' }}>
-              Pilots with ≥85 match score are <strong style={{ color: 'white' }}>3.2x more likely</strong> to reach procurement.
+              Pilots with ≥85 match score are <strong style={{ color: 'var(--text-primary)' }}>3.2x more likely</strong> to reach procurement.
             </div>
           </div>
         </div>

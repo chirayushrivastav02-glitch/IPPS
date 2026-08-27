@@ -48,13 +48,13 @@ export default function LandingPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <div className="landing-hero" style={{ background: 'var(--navy-950)' }}>
+    <div className="landing-hero" style={{ background: 'var(--bg-primary)' }}>
       {/* Navbar */}
       <nav className="landing-nav">
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, cursor: 'pointer' }} onClick={() => navigate('/')}>
           <img src="/logo.png" alt="IPPS Setu" style={{ width: 42, height: 42, borderRadius: '50%', background: 'white', padding: 3, objectFit: 'contain' }} />
           <div>
-            <div style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 18, color: 'white', lineHeight: 1.1 }}>IPPS Setu</div>
+            <div style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 18, color: 'var(--text-primary)', lineHeight: 1.1 }}>IPPS Setu</div>
             <div style={{ fontSize: 10, color: 'var(--text-muted)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>Innovation Procurement Platform</div>
           </div>
         </div>
@@ -81,7 +81,7 @@ export default function LandingPage() {
       </nav>
 
       {mobileMenuOpen && (
-        <div style={{ background: 'var(--navy-900)', borderBottom: '1px solid var(--border-color)', padding: '12px 24px' }}>
+        <div style={{ background: 'var(--bg-secondary)', borderBottom: '1px solid var(--border-color)', padding: '12px 24px' }}>
           {['Home', 'How It Works', 'Challenges', 'Startups', 'About'].map(link => (
             <div key={link} style={{ padding: '10px 0', color: 'var(--text-secondary)', fontSize: 14, borderBottom: '1px solid var(--border-color)' }}>{link}</div>
           ))}
@@ -127,7 +127,7 @@ export default function LandingPage() {
                 fontSize: 'clamp(36px, 5vw, 58px)',
                 fontWeight: 900,
                 lineHeight: 1.1,
-                color: 'white',
+                color: 'var(--text-primary)',
                 marginBottom: 24,
               }}>
                 From Government Challenges to{' '}
@@ -159,7 +159,7 @@ export default function LandingPage() {
               <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
                 {['MOU-aligned', 'GeM Integrated', 'DPIIT Recognised', 'GFR 2017 Compliant'].map(badge => (
                   <span key={badge} style={{
-                    background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)',
+                    background: 'var(--surface-alt)', border: '1px solid rgba(255,255,255,0.1)',
                     borderRadius: 'var(--radius-full)', padding: '4px 12px',
                     fontSize: 11.5, fontWeight: 500, color: 'var(--text-secondary)',
                   }}>
@@ -180,7 +180,7 @@ export default function LandingPage() {
                     transition: 'all var(--transition-base)',
                   }}>
                     <div style={{ fontSize: 24, marginBottom: 6 }}>{stat.icon}</div>
-                    <div style={{ fontFamily: 'var(--font-display)', fontSize: 28, fontWeight: 800, color: 'white', lineHeight: 1 }}>{stat.value}</div>
+                    <div style={{ fontFamily: 'var(--font-display)', fontSize: 28, fontWeight: 800, color: 'var(--text-primary)', lineHeight: 1 }}>{stat.value}</div>
                     <div style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 4 }}>{stat.label}</div>
                   </div>
                 ))}
@@ -207,7 +207,7 @@ export default function LandingPage() {
                     { label: 'Beneficiaries', value: '2.4M+' },
                   ].map(m => (
                     <div key={m.label} style={{ textAlign: 'center' }}>
-                      <div style={{ fontFamily: 'var(--font-display)', fontSize: 18, fontWeight: 800, color: 'white' }}>{m.value}</div>
+                      <div style={{ fontFamily: 'var(--font-display)', fontSize: 18, fontWeight: 800, color: 'var(--text-primary)' }}>{m.value}</div>
                       <div style={{ fontSize: 10, color: 'var(--text-muted)', marginTop: 2, textTransform: 'uppercase', letterSpacing: '0.04em' }}>{m.label}</div>
                     </div>
                   ))}
@@ -219,10 +219,10 @@ export default function LandingPage() {
       </section>
 
       {/* Process Flow */}
-      <section style={{ padding: '80px 64px', background: 'var(--navy-900)' }}>
+      <section style={{ padding: '80px 64px', background: 'var(--bg-secondary)' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: 48 }}>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 36, fontWeight: 800, color: 'white', marginBottom: 12 }}>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 36, fontWeight: 800, color: 'var(--text-primary)', marginBottom: 12 }}>
               The Complete Innovation Procurement Journey
             </h2>
             <p style={{ color: 'var(--text-secondary)', fontSize: 16 }}>
@@ -251,7 +251,7 @@ export default function LandingPage() {
                     <Icon size={20} style={{ color: step.color }} />
                   </div>
                   <div style={{ fontSize: 10, fontWeight: 700, color: step.color, letterSpacing: '0.06em', marginBottom: 4 }}>STEP {step.step}</div>
-                  <div style={{ fontWeight: 700, fontSize: 14, color: 'white', marginBottom: 6 }}>{step.title}</div>
+                  <div style={{ fontWeight: 700, fontSize: 14, color: 'var(--text-primary)', marginBottom: 6 }}>{step.title}</div>
                   <div style={{ fontSize: 12, color: 'var(--text-muted)', lineHeight: 1.5 }}>{step.desc}</div>
                   {idx < processSteps.length - 1 && (
                     <div style={{
@@ -272,7 +272,7 @@ export default function LandingPage() {
       <section style={{ padding: '80px 64px' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: 48 }}>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 36, fontWeight: 800, color: 'white', marginBottom: 12 }}>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 36, fontWeight: 800, color: 'var(--text-primary)', marginBottom: 12 }}>
               Built for Government Innovation at Scale
             </h2>
             <p style={{ color: 'var(--text-secondary)', fontSize: 16 }}>
@@ -297,7 +297,7 @@ export default function LandingPage() {
                   }}>
                     <Icon size={22} style={{ color: feat.color }} />
                   </div>
-                  <h3 style={{ fontWeight: 700, fontSize: 16, color: 'white', marginBottom: 8 }}>{feat.title}</h3>
+                  <h3 style={{ fontWeight: 700, fontSize: 16, color: 'var(--text-primary)', marginBottom: 8 }}>{feat.title}</h3>
                   <p style={{ fontSize: 13.5, color: 'var(--text-secondary)', lineHeight: 1.6 }}>{feat.desc}</p>
                 </div>
               );
@@ -313,7 +313,7 @@ export default function LandingPage() {
         borderTop: '1px solid var(--border-color)',
       }}>
         <div style={{ maxWidth: 800, margin: '0 auto', textAlign: 'center' }}>
-          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 40, fontWeight: 800, color: 'white', marginBottom: 16 }}>
+          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 40, fontWeight: 800, color: 'var(--text-primary)', marginBottom: 16 }}>
             Ready to Transform Government Innovation?
           </h2>
           <p style={{ color: 'var(--text-secondary)', fontSize: 17, marginBottom: 36 }}>
@@ -334,12 +334,12 @@ export default function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer style={{ background: 'var(--navy-900)', borderTop: '1px solid var(--border-color)', padding: '32px 64px' }}>
+      <footer style={{ background: 'var(--bg-secondary)', borderTop: '1px solid var(--border-color)', padding: '32px 64px' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24, flexWrap: 'wrap' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             <img src="/logo.png" alt="IPPS Setu" style={{ width: 32, height: 32, borderRadius: '50%', background: 'white', padding: 2, objectFit: 'contain' }} />
             <div>
-              <div style={{ fontWeight: 700, color: 'white', fontSize: 14 }}>IPPS Setu</div>
+              <div style={{ fontWeight: 700, color: 'var(--text-primary)', fontSize: 14 }}>IPPS Setu</div>
               <div style={{ fontSize: 11, color: 'var(--text-muted)' }}>Innovation Procurement Platform</div>
             </div>
           </div>

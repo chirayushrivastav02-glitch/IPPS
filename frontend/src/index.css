@@ -1557,3 +1557,181 @@ ul, ol {
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 .required { color: var(--red-400); }
+
+/* =====================================================================
+   LIGHT THEME — Navy + White + Teal (primary), Green / Amber / Purple
+   as secondary status colours. Applied as a token + surface override
+   layer so every existing component keeps its structure.
+   ===================================================================== */
+:root {
+  --mint-50: #f2f9f9;
+  --mint-100: #e7f4f4;
+  --mint-200: #d5ebeb;
+  --surface-alt: var(--mint-100);
+
+  /* Semantic surfaces */
+  --bg-primary: var(--mint-50);
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f7fbfb;
+  --bg-sidebar: #0a1f3c;
+  --bg-input: #ffffff;
+
+  /* Text */
+  --text-primary: #0a1f3c;
+  --text-secondary: #3f5871;
+  --text-muted: #64748b;
+  --text-accent: var(--teal-600);
+
+  --border-color: rgba(10, 31, 60, 0.12);
+  --border-accent: rgba(13, 148, 136, 0.35);
+
+  --shadow-sm: 0 1px 2px rgba(10, 31, 60, 0.06);
+  --shadow-md: 0 4px 14px rgba(10, 31, 60, 0.08);
+  --shadow-lg: 0 10px 30px rgba(10, 31, 60, 0.10);
+  --shadow-xl: 0 22px 50px rgba(10, 31, 60, 0.14);
+  --shadow-teal: 0 6px 18px rgba(13, 148, 136, 0.18);
+  --shadow-glow: 0 10px 30px rgba(13, 148, 136, 0.12);
+}
+
+/* The sidebar stays deep navy — re-scope the tokens inside it so inline
+   styles that read var(--text-*) stay legible on the dark surface. */
+.app-sidebar,
+.app-sidebar ~ div aside {
+  --text-primary: #f1f6fd;
+  --text-secondary: #b6c6da;
+  --text-muted: #8ba0ba;
+  --border-color: rgba(255, 255, 255, 0.09);
+  --bg-card: rgba(255, 255, 255, 0.05);
+  color: #f1f6fd;
+}
+.app-sidebar .sidebar-item { color: rgba(241, 246, 253, 0.78); }
+.app-sidebar .sidebar-item:hover { background: rgba(255, 255, 255, 0.08); color: #fff; }
+.app-sidebar .sidebar-item.active { background: rgba(45, 212, 191, 0.16); color: var(--teal-300); }
+.app-sidebar .sidebar-section-label { color: #7f95b1; }
+.app-sidebar .sidebar-logo-text { color: #ffffff; }
+.app-sidebar .sidebar-footer { border-top-color: rgba(255, 255, 255, 0.09); }
+
+/* Chrome */
+::-webkit-scrollbar-track { background: var(--mint-100); }
+::-webkit-scrollbar-thumb { background: #b9cbd6; }
+::-webkit-scrollbar-thumb:hover { background: var(--teal-600); }
+
+.app-topbar { background: #ffffff; box-shadow: var(--shadow-sm); }
+.app-content { background: var(--bg-primary); }
+
+/* Cards & surfaces */
+.card, .kpi-card, .challenge-card, .modal, .table-wrapper {
+  background: #ffffff;
+  border-color: var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
+.card:hover, .kpi-card:hover, .challenge-card:hover {
+  border-color: rgba(13, 148, 136, 0.35);
+  box-shadow: var(--shadow-md);
+}
+.card-value { color: var(--text-primary); }
+.section-title, .card-title, .modal-title, .challenge-card-title, .empty-state-title { color: var(--text-primary); }
+.divider { background: var(--border-color); }
+.modal-overlay { background: rgba(10, 31, 60, 0.45); }
+.empty-state { background: #ffffff; border-color: var(--border-color); }
+.profile-completion { background: var(--mint-100); }
+
+/* Buttons */
+.btn-secondary {
+  background: var(--mint-100);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+.btn-secondary:hover { background: var(--mint-200); border-color: rgba(10, 31, 60, 0.18); }
+.btn-outline { color: var(--teal-600); border-color: var(--border-accent); }
+.btn-outline:hover { background: rgba(13, 148, 136, 0.08); }
+.btn-primary { box-shadow: var(--shadow-teal); }
+
+/* Pipeline strip */
+.pipeline-bar { background: #ffffff; }
+.pipeline-step-btn { background: var(--mint-100); color: var(--text-secondary); }
+.pipeline-step-btn:hover { background: var(--mint-200); }
+.pipeline-step-btn.active { background: rgba(13, 148, 136, 0.12); color: var(--teal-600); }
+.pipeline-arrow { color: #94a3b8; }
+
+/* Tables */
+.table th { background: var(--mint-100); color: #4b6480; }
+.table td { color: var(--text-primary); border-bottom: 1px solid rgba(10, 31, 60, 0.07); }
+.table tbody tr:hover { background: var(--mint-50); }
+
+/* Forms */
+.form-input, .form-select, .form-textarea, .search-bar, .filter-select {
+  background: #ffffff;
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+.form-select option { background: #ffffff; color: var(--text-primary); }
+.form-label { color: var(--text-primary); }
+
+/* Tabs */
+.tab-btn { color: var(--text-secondary); }
+.tab-btn:hover { color: var(--text-primary); }
+.tab-btn.active { color: var(--teal-600); border-bottom-color: var(--teal-600); }
+.tabs { border-bottom-color: var(--border-color); }
+
+/* Tags */
+.tag { background: var(--mint-100); color: #35506d; border: 1px solid rgba(10, 31, 60, 0.07); }
+.tag.teal { background: rgba(13, 148, 136, 0.10); color: var(--teal-600); border-color: rgba(13, 148, 136, 0.25); }
+.tag.blue { background: rgba(37, 99, 235, 0.09); color: #1d4ed8; border-color: rgba(37, 99, 235, 0.22); }
+.tag.orange { background: rgba(249, 115, 22, 0.10); color: #c2410c; border-color: rgba(249, 115, 22, 0.25); }
+
+/* Status badges — green success, amber attention, purple category */
+.badge { border: 1px solid transparent; }
+.badge-draft      { background: #eef2f7; color: #475569; border-color: #dbe3ec; }
+.badge-published  { background: #e7f8ef; color: #15803d; border-color: #bbe9cd; }
+.badge-submitted  { background: #e8f1fe; color: #1d4ed8; border-color: #c5dafd; }
+.badge-screening  { background: #eef0fe; color: #4338ca; border-color: #d3d8fc; }
+.badge-evaluation { background: #fdf5e3; color: #a16207; border-color: #f6e3b5; }
+.badge-shortlisted{ background: #e7f8ef; color: #15803d; border-color: #bbe9cd; }
+.badge-pilot      { background: #f4ecfe; color: #7e22ce; border-color: #e4d3fb; }
+.badge-procurement{ background: #e6f6f7; color: #0f766e; border-color: #bfe6e6; }
+.badge-completed  { background: #e7f8ef; color: #15803d; border-color: #bbe9cd; }
+.badge-active     { background: #e6f6f7; color: #0f766e; border-color: #bfe6e6; }
+.badge-pending    { background: #fdf5e3; color: #a16207; border-color: #f6e3b5; }
+.badge-rejected   { background: #fdecec; color: #b91c1c; border-color: #f8cfcf; }
+
+/* Progress, timeline, stepper */
+.progress-bar { background: rgba(10, 31, 60, 0.08); }
+.timeline-dot.pending, .stepper-dot.future {
+  background: var(--mint-100);
+  border-color: rgba(10, 31, 60, 0.15);
+  color: var(--text-muted);
+}
+.timeline-connector, .stepper-line { background: rgba(10, 31, 60, 0.12); }
+.timeline-label { color: var(--text-muted); }
+.timeline-label.completed, .timeline-label.active { color: var(--text-primary); }
+.stepper-dot.current { box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.15); }
+
+/* Match score & info banner */
+.match-score { background: var(--mint-100); color: var(--text-primary); }
+.match-score.high { background: rgba(34, 197, 94, 0.12); color: #15803d; }
+.match-score.medium { background: rgba(251, 191, 36, 0.16); color: #a16207; }
+.info-banner {
+  background: rgba(13, 148, 136, 0.07);
+  border-color: rgba(13, 148, 136, 0.22);
+  color: #2f4a63;
+}
+
+/* Public + auth surfaces */
+.landing-nav { background: rgba(255, 255, 255, 0.92); border-bottom: 1px solid var(--border-color); }
+.landing-nav-link { color: var(--text-secondary); }
+.landing-nav-link:hover { color: var(--teal-600); }
+.landing-hero { background: var(--bg-primary); }
+.role-card { background: #ffffff; border-color: var(--border-color); box-shadow: var(--shadow-sm); }
+.role-card:hover { border-color: var(--border-accent); box-shadow: var(--shadow-md); }
+
+/* Toast */
+.global-notification {
+  background: #ffffff;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-left: 3px solid var(--teal-500);
+  box-shadow: var(--shadow-lg);
+}
+.global-notification.error { border-left-color: #ef4444; }

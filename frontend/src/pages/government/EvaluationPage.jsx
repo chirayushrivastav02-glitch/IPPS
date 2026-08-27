@@ -23,12 +23,12 @@ function ScoreRing({ score, size = 80, color = '#0d9488' }) {
   return (
     <div style={{ position: 'relative', width: size, height: size }}>
       <svg width={size} height={size} style={{ transform: 'rotate(-90deg)' }}>
-        <circle cx={size/2} cy={size/2} r={r} fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth={6} />
+        <circle cx={size/2} cy={size/2} r={r} fill="none" stroke="rgba(10,31,60,0.10)" strokeWidth={6} />
         <circle cx={size/2} cy={size/2} r={r} fill="none" stroke={color} strokeWidth={6}
           strokeDasharray={`${dash} ${circ - dash}`} strokeLinecap="round" style={{ transition: 'stroke-dasharray 0.8s ease' }} />
       </svg>
       <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
-        <span style={{ fontFamily: 'var(--font-display)', fontSize: size * 0.22, fontWeight: 800, color: 'white', lineHeight: 1 }}>{score}</span>
+        <span style={{ fontFamily: 'var(--font-display)', fontSize: size * 0.22, fontWeight: 800, color: 'var(--text-primary)', lineHeight: 1 }}>{score}</span>
         <span style={{ fontSize: size * 0.12, color: 'var(--text-muted)', lineHeight: 1 }}>/100</span>
       </div>
     </div>
@@ -72,7 +72,7 @@ export default function EvaluationPage() {
         <div style={{ display: 'flex', gap: 10 }}>
           <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: 'var(--radius-md)', padding: '8px 16px', fontSize: 13 }}>
             <span style={{ color: 'var(--text-muted)' }}>Applications: </span>
-            <strong style={{ color: 'white' }}>{applications.length}</strong>
+            <strong style={{ color: 'var(--text-primary)' }}>{applications.length}</strong>
           </div>
           <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: 'var(--radius-md)', padding: '8px 16px', fontSize: 13 }}>
             <span style={{ color: 'var(--text-muted)' }}>Shortlisted: </span>
@@ -105,7 +105,7 @@ export default function EvaluationPage() {
                     {app.startupName?.charAt(0)}
                   </div>
                   <div>
-                    <div style={{ fontWeight: 700, fontSize: 15, color: 'white' }}>{app.startupName}</div>
+                    <div style={{ fontWeight: 700, fontSize: 15, color: 'var(--text-primary)' }}>{app.startupName}</div>
                     <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>
                       {app.challenge?.title?.slice(0, 50)}... · Submitted {app.submittedDate}
                     </div>
@@ -217,9 +217,9 @@ export default function EvaluationPage() {
                           ['Duration', app.pilotDuration],
                           ['Team', app.totalTeam],
                         ].map(([k, v]) => (
-                          <div key={k} style={{ background: 'rgba(255,255,255,0.03)', borderRadius: 'var(--radius-md)', padding: '10px 12px' }}>
+                          <div key={k} style={{ background: 'rgba(10,31,60,0.04)', borderRadius: 'var(--radius-md)', padding: '10px 12px' }}>
                             <div style={{ fontSize: 11, color: 'var(--text-muted)', marginBottom: 4 }}>{k}</div>
-                            <div style={{ fontSize: 13, fontWeight: 600, color: 'white' }}>{v}</div>
+                            <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-primary)' }}>{v}</div>
                           </div>
                         ))}
                       </div>
@@ -240,7 +240,7 @@ export default function EvaluationPage() {
                       {app.evaluationComments?.length > 0 && (
                         <div>
                           {app.evaluationComments.map((ec, idx) => (
-                            <div key={idx} style={{ background: 'rgba(255,255,255,0.03)', borderRadius: 'var(--radius-md)', padding: '10px 14px', marginBottom: 8 }}>
+                            <div key={idx} style={{ background: 'rgba(10,31,60,0.04)', borderRadius: 'var(--radius-md)', padding: '10px 14px', marginBottom: 8 }}>
                               <div style={{ fontSize: 12, fontWeight: 600, color: 'var(--teal-400)', marginBottom: 4 }}>{ec.author} · {ec.date}</div>
                               <div style={{ fontSize: 13, color: 'var(--text-secondary)' }}>{ec.comment}</div>
                             </div>

@@ -108,7 +108,7 @@ export default function StartupDashboard() {
                 style={{
                   display: 'flex', alignItems: 'center', gap: 12, cursor: 'pointer',
                   padding: '12px 14px', borderRadius: 'var(--radius-md)',
-                  border: '1px solid var(--border-color)', background: 'rgba(255,255,255,0.02)',
+                  border: '1px solid var(--border-color)', background: 'var(--surface-alt)',
                 }}
                 data-testid={`recommended-item-${m.challengeId}`}
               >

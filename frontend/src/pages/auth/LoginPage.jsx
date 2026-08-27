@@ -66,7 +66,7 @@ export default function LoginPage() {
   return (
     <div style={{
       minHeight: '100vh',
-      background: 'var(--navy-950)',
+      background: 'var(--bg-primary)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -81,7 +81,7 @@ export default function LoginPage() {
       }} />
       <div style={{
         position: 'absolute', inset: 0,
-        backgroundImage: 'linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)',
+        backgroundImage: 'linear-gradient(rgba(10,31,60,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(10,31,60,0.04) 1px, transparent 1px)',
         backgroundSize: '48px 48px',
       }} />
 
@@ -91,7 +91,7 @@ export default function LoginPage() {
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12, cursor: 'pointer' }} onClick={() => navigate('/')}>
             <img src="/logo.png" alt="IPPS Setu" style={{ width: 52, height: 52, borderRadius: '50%', background: 'white', padding: 4, objectFit: 'contain' }} />
             <div style={{ textAlign: 'left' }}>
-              <div style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 22, color: 'white' }}>IPPS Setu</div>
+              <div style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 22, color: 'var(--text-primary)' }}>IPPS Setu</div>
               <div style={{ fontSize: 11, color: 'var(--text-muted)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>Innovation Procurement Platform</div>
             </div>
           </div>
@@ -100,7 +100,7 @@ export default function LoginPage() {
         {/* Role Selector */}
         {!selectedRole ? (
           <div>
-            <h2 style={{ textAlign: 'center', fontFamily: 'var(--font-display)', fontSize: 28, fontWeight: 800, color: 'white', marginBottom: 8 }}>
+            <h2 style={{ textAlign: 'center', fontFamily: 'var(--font-display)', fontSize: 28, fontWeight: 800, color: 'var(--text-primary)', marginBottom: 8 }}>
               Welcome to IPPS Setu
             </h2>
             <p style={{ textAlign: 'center', color: 'var(--text-secondary)', marginBottom: 36 }}>
@@ -126,7 +126,7 @@ export default function LoginPage() {
                     }}>
                       <Icon size={28} style={{ color: role.color }} />
                     </div>
-                    <h3 style={{ fontWeight: 700, fontSize: 18, color: 'white', marginBottom: 4 }}>{role.label}</h3>
+                    <h3 style={{ fontWeight: 700, fontSize: 18, color: 'var(--text-primary)', marginBottom: 4 }}>{role.label}</h3>
                     <p style={{ fontSize: 12.5, color: 'var(--text-muted)', marginBottom: 12 }}>{role.subtitle}</p>
                     <p style={{ fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.5 }}>{role.description}</p>
                   </div>
@@ -168,12 +168,12 @@ export default function LoginPage() {
                   {selectedRole === 'government' ? <Shield size={20} style={{ color: selectedRoleData.color }} /> : <Zap size={20} style={{ color: selectedRoleData.color }} />}
                 </div>
                 <div>
-                  <div style={{ fontWeight: 700, fontSize: 16, color: 'white' }}>{selectedRoleData.label}</div>
+                  <div style={{ fontWeight: 700, fontSize: 16, color: 'var(--text-primary)' }}>{selectedRoleData.label}</div>
                   <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>{selectedRoleData.subtitle}</div>
                 </div>
               </div>
 
-              <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 22, fontWeight: 800, color: 'white', marginBottom: 4 }}>
+              <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 22, fontWeight: 800, color: 'var(--text-primary)', marginBottom: 4 }}>
                 {isRegister ? 'Create Account' : 'Sign In'}
               </h2>
               <p style={{ fontSize: 13, color: 'var(--text-muted)', marginBottom: 24 }}>

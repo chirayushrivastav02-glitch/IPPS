@@ -87,7 +87,7 @@ export default function CreateChallengePage() {
         {/* Step 1: Problem */}
         {currentStep === 1 && (
           <div className="card">
-            <h3 style={{ fontSize: 18, fontWeight: 700, color: 'white', marginBottom: 24 }}>Problem Statement</h3>
+            <h3 style={{ fontSize: 18, fontWeight: 700, color: 'var(--text-primary)', marginBottom: 24 }}>Problem Statement</h3>
 
             <div className="form-group">
               <label className="form-label">Challenge Title <span className="required">*</span></label>
@@ -153,7 +153,7 @@ export default function CreateChallengePage() {
         {/* Step 2: Solution */}
         {currentStep === 2 && (
           <div className="card">
-            <h3 style={{ fontSize: 18, fontWeight: 700, color: 'white', marginBottom: 24 }}>Expected Solution</h3>
+            <h3 style={{ fontSize: 18, fontWeight: 700, color: 'var(--text-primary)', marginBottom: 24 }}>Expected Solution</h3>
 
             <div className="form-group">
               <label className="form-label">Expected Solution / Outcome <span className="required">*</span></label>
@@ -213,7 +213,7 @@ export default function CreateChallengePage() {
         {/* Step 3: Procurement */}
         {currentStep === 3 && (
           <div className="card">
-            <h3 style={{ fontSize: 18, fontWeight: 700, color: 'white', marginBottom: 24 }}>Procurement Details</h3>
+            <h3 style={{ fontSize: 18, fontWeight: 700, color: 'var(--text-primary)', marginBottom: 24 }}>Procurement Details</h3>
 
             <div className="form-row cols-2">
               <div className="form-group">
@@ -260,7 +260,7 @@ export default function CreateChallengePage() {
         {/* Step 4: Eligibility */}
         {currentStep === 4 && (
           <div className="card">
-            <h3 style={{ fontSize: 18, fontWeight: 700, color: 'white', marginBottom: 24 }}>Eligibility Criteria</h3>
+            <h3 style={{ fontSize: 18, fontWeight: 700, color: 'var(--text-primary)', marginBottom: 24 }}>Eligibility Criteria</h3>
 
             <div className="form-group">
               <label className="form-label">Startup Requirements <span className="required">*</span></label>
@@ -322,7 +322,7 @@ export default function CreateChallengePage() {
         {/* Step 5: Evaluation Criteria */}
         {currentStep === 5 && (
           <div className="card">
-            <h3 style={{ fontSize: 18, fontWeight: 700, color: 'white', marginBottom: 8 }}>Evaluation Criteria</h3>
+            <h3 style={{ fontSize: 18, fontWeight: 700, color: 'var(--text-primary)', marginBottom: 8 }}>Evaluation Criteria</h3>
             <p style={{ fontSize: 13.5, color: 'var(--text-muted)', marginBottom: 24 }}>
               Set weightage percentages for each evaluation criterion. Total must equal 100%.
             </p>
@@ -363,7 +363,7 @@ export default function CreateChallengePage() {
                       style={{
                         width: 64, padding: '6px 10px', background: 'var(--bg-input)',
                         border: '1px solid var(--border-color)', borderRadius: 'var(--radius-md)',
-                        color: 'white', fontSize: 14, fontWeight: 700, textAlign: 'center',
+                        color: 'var(--text-primary)', fontSize: 14, fontWeight: 700, textAlign: 'center',
                       }}
                     />
                     <span style={{ color: 'var(--text-muted)', fontSize: 14 }}>%</span>
@@ -375,7 +375,7 @@ export default function CreateChallengePage() {
               </div>
             ))}
 
-            <div style={{ padding: '12px 16px', background: 'rgba(255,255,255,0.03)', borderRadius: 'var(--radius-md)', display: 'flex', justifyContent: 'space-between' }}>
+            <div style={{ padding: '12px 16px', background: 'rgba(10,31,60,0.04)', borderRadius: 'var(--radius-md)', display: 'flex', justifyContent: 'space-between' }}>
               <span style={{ fontWeight: 600, color: 'var(--text-primary)' }}>Total</span>
               <span style={{ fontWeight: 800, color: totalCriteria === 100 ? 'var(--green-400)' : 'var(--red-400)', fontSize: 18 }}>{totalCriteria}%</span>
             </div>

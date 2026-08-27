@@ -5,6 +5,14 @@ Government ↔ Startup innovation procurement platform (Phase 1). React 19 + Vit
 **All app data is MOCKED** in `frontend/src/data/mockData.js` and served through
 `frontend/src/services/api.js` (promise-based, simulated latency). No backend persistence.
 
+## Theme
+Light **Navy + White + Teal** palette. `frontend/src/index.css` keeps the original
+palette variables, then a "LIGHT THEME" override block at the end of the file
+redefines the semantic tokens (white cards, mint `--bg-primary`, navy text) and
+restyles surfaces/badges. The sidebar stays deep navy and re-scopes `--text-*`
+inside `.app-sidebar` so inline styles remain legible. Status colours: green =
+success/open, amber = attention/deadline, purple = pilot/category, red = rejected.
+
 ## Routing (frontend/src/App.tsx — BrowserRouter lives in main.tsx)
 - `/` LandingPage, `/login` LoginPage (role picker)
 - Government (`GovernmentLayout`): `/gov/dashboard`, `/gov/challenges`,

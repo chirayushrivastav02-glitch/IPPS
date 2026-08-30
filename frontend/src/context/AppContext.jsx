@@ -10,6 +10,8 @@ export const AppProvider = ({ children }) => {
   const [notification, setNotification] = useState(null);
   // Proposals submitted during this session (Phase 1 = in-memory over mockData)
   const [proposals, setProposals] = useState([]);
+  // Expert Network mentorship requests (mock, session-scoped)
+  const [mentorships, setMentorships] = useState([]);
 
   const login = useCallback(async (role, email, password) => {
     setIsLoading(true);
@@ -40,11 +42,27 @@ export const AppProvider = ({ children }) => {
     setProposals(prev => [application, ...prev]);
   }, []);
 
+  // ---- Expert Network (mock frontend state only) ----
+  const requestMentorship = useCallback((request) => {
+    setMentorships(prev => [request, ...prev]);
+  }, []);
+
+  const updateMentorshipStatus = useCallback((id, status, scheduledFor) => {
+    setMentorships(prev => prev.map(m => (
+      m.id === id ? { ...m, status, scheduledFor: scheduledFor ?? m.scheduledFor } : m
+    )));
+  }, []);
+
+  const saveMentorshipOutcome = useCallback((id, outcome) => {
+    setMentorships(prev => prev.map(m => (m.id === id ? { ...m, outcome } : m)));
+  }, []);
+
   return (
     <AppContext.Provider value={{
       user, setUser, isLoading, login, logout,
       notification, showNotification,
       proposals, addProposal,
+      mentorships, requestMentorship, updateMentorshipStatus, saveMentorshipOutcome,
     }}>
       {children}
       {notification && (

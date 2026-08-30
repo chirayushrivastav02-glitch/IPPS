@@ -14,6 +14,8 @@ import {
   mockTemplates,
   dashboardStats,
 } from '../data/mockData';
+import { expertMentors } from '../data/expertMentors';
+import { rankExpertsForChallenge } from '../lib/expertMatching';
 
 // Simulate network delay
 const delay = (ms = 300) => new Promise(resolve => setTimeout(resolve, ms));
@@ -227,6 +229,55 @@ export const templatesAPI = {
   download: async (id) => {
     await delay(400);
     return { success: true, message: 'Download started' };
+  },
+};
+
+// ========== EXPERT NETWORK API ==========
+// Phase 1: mock. A real implementation swaps these bodies for apiGet/apiPost
+// calls to /api/experts and /api/mentorships — the shapes stay identical.
+export const expertsAPI = {
+  getAll: async () => {
+    await delay(300);
+    return expertMentors;
+  },
+
+  getById: async (id) => {
+    await delay(250);
+    const expert = expertMentors.find(e => e.id === id);
+    if (!expert) throw new Error('Expert not found');
+    return expert;
+  },
+
+  getRecommended: async (challengeId) => {
+    await delay(500);
+    const challenge = mockChallenges.find(c => c.id === challengeId) || null;
+    return rankExpertsForChallenge(challenge, expertMentors);
+  },
+
+  requestMentorship: async (data) => {
+    await delay(600);
+    return {
+      success: true,
+      request: {
+        ...data,
+        id: `MR-${Date.now().toString().slice(-6)}`,
+        status: 'Requested',
+        requestedDate: new Date().toISOString().split('T')[0],
+        scheduledFor: null,
+        outcome: null,
+      },
+    };
+  },
+
+  updateMentorship: async (id, status) => {
+    await delay(400);
+    const slot = new Date(Date.now() + 4 * 86400000).toISOString().split('T')[0];
+    return { success: true, id, status, scheduledFor: status === 'Scheduled' ? `${slot}, 11:00 IST` : null };
+  },
+
+  saveOutcome: async (id, outcome) => {
+    await delay(400);
+    return { success: true, id, outcome };
   },
 };
 

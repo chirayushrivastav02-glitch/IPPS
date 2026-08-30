@@ -16,6 +16,8 @@ import MarketplacePage from "@/pages/startup/MarketplacePage";
 import ChallengeDetailPage from "@/pages/startup/ChallengeDetailPage";
 import SubmitProposalPage from "@/pages/startup/SubmitProposalPage";
 import ApplicationsPage from "@/pages/startup/ApplicationsPage";
+import ExpertNetworkPage from "@/pages/startup/ExpertNetworkPage";
+import ExpertProfilePage from "@/pages/startup/ExpertProfilePage";
 import ComingSoon from "@/pages/ComingSoon";
 
 // BrowserRouter is already mounted in main.tsx — this file owns the route table.
@@ -151,6 +153,22 @@ export default function App() {
           element={
             <StartupLayout>
               <ApplicationsPage />
+            </StartupLayout>
+          }
+        />
+        <Route
+          path="/startup/experts"
+          element={
+            <StartupLayout>
+              <ExpertNetworkPage />
+            </StartupLayout>
+          }
+        />
+        <Route
+          path="/startup/experts/:id"
+          element={
+            <StartupLayout>
+              <ExpertProfilePage />
             </StartupLayout>
           }
         />

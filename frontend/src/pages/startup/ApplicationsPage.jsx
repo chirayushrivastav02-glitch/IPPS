@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../../context/AppContext';
 import { mockApplications, mockChallenges } from '../../data/mockData';
-import { Store, ChevronRight } from 'lucide-react';
+import { Store, ChevronRight, HandHeart } from 'lucide-react';
 
 const MY_STARTUP_ID = 'ST-003';
 
@@ -127,7 +127,14 @@ export default function ApplicationsPage() {
                   {a.teamLead && <span className="challenge-meta-item">👤 {a.teamLead}</span>}
                 </div>
 
-                <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 14 }}>
+                <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 8, marginTop: 14 }}>
+                  <button
+                    className="btn btn-sm btn-secondary"
+                    onClick={() => navigate(`/startup/experts?challenge=${a.challengeId}`)}
+                    data-testid={`application-find-experts-${a.id}`}
+                  >
+                    <HandHeart size={13} /> Find Experts
+                  </button>
                   <button
                     className="btn btn-sm btn-secondary"
                     onClick={() => navigate(`/startup/marketplace/${a.challengeId}`)}

@@ -13,6 +13,25 @@ restyles surfaces/badges. The sidebar stays deep navy and re-scopes `--text-*`
 inside `.app-sidebar` so inline styles remain legible. Status colours: green =
 success/open, amber = attention/deadline, purple = pilot/category, red = rejected.
 
+## Expert Network (startup portal)
+Connects startups on an active application/pilot with fictional domain experts.
+- Data: `frontend/src/data/expertMentors.js` (10 profiles, EXP-001…010) — every
+  profile is labelled **"Demo Expert"** in the UI.
+- Matching: `frontend/src/lib/expertMatching.js` (`rankExpertsForChallenge`,
+  `applyExpertFilters`) scores each expert against the selected challenge
+  (direct challenge fit, sector depth, expertise keyword hits, rural/last-mile
+  signal) and produces the "Recommended because…" explanation.
+- Service: `expertsAPI` in `services/api.js` (getAll / getById / getRecommended /
+  requestMentorship / updateMentorship / saveOutcome) — mock bodies, real-API-ready shapes.
+- Pages: `/startup/experts` (context selector + Recommended / All Experts / My
+  Mentorships tabs; filters = search, industry, expertise, challenge sector, min
+  match score) and `/startup/experts/:id` (expertise, sectors, experience,
+  recommended projects). Sidebar entry "Expert Network"; "Find Experts" shortcut
+  on each application card deep-links with `?challenge=CH-…`.
+- Mentorship flow (session state in `AppContext.mentorships`): Requested →
+  Scheduled → Completed → Mentorship Outcomes (Key Advice, Recommended Actions,
+  Expected Impact, Next Steps). No messaging/video/external integrations.
+
 ## Routing (frontend/src/App.tsx — BrowserRouter lives in main.tsx)
 - `/` LandingPage, `/login` LoginPage (role picker)
 - Government (`GovernmentLayout`): `/gov/dashboard`, `/gov/challenges`,

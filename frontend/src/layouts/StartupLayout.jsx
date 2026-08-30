@@ -5,13 +5,14 @@ import { useApp } from '../context/AppContext';
 import Logo from '../components/Logo';
 import {
   LayoutDashboard, Store, Star, FileText, Cpu, Beaker, FileSignature,
-  CreditCard, TrendingUp, User, FolderOpen, Bell, LogOut, ChevronRight, Menu
+  CreditCard, TrendingUp, User, FolderOpen, Bell, LogOut, ChevronRight, Menu, HandHeart
 } from 'lucide-react';
 
 const navItems = [
   { icon: LayoutDashboard, label: 'Overview', path: '/startup/dashboard' },
   { icon: Store, label: 'Challenge Marketplace', path: '/startup/marketplace' },
   { icon: Star, label: 'Recommended', path: '/startup/recommended' },
+  { icon: HandHeart, label: 'Expert Network', path: '/startup/experts', badge: 'New', badgeType: 'ai' },
   { icon: FileText, label: 'My Applications', path: '/startup/applications' },
   { icon: Cpu, label: 'Matching Engine', path: '/startup/matching', badge: 'AI', badgeType: 'ai' },
   { icon: Beaker, label: 'Pilots', path: '/startup/pilots' },

@@ -3,11 +3,19 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../../context/AppContext';
 import { mockApplications, mockChallenges } from '../../data/mockData';
-import { Store, ChevronRight, HandHeart } from 'lucide-react';
+import { Store, ChevronRight, HandHeart, FileText, SearchCheck, ClipboardList, Star, Rocket } from 'lucide-react';
 
 const MY_STARTUP_ID = 'ST-003';
 
-const stages = ['Submitted', 'Screening', 'Evaluation', 'Shortlisted', 'Pilot'];
+// Stage order + the icon shown inside each timeline circle.
+const stages = [
+  { key: 'Submitted', icon: FileText },
+  { key: 'Screening', icon: SearchCheck },
+  { key: 'Evaluation', icon: ClipboardList },
+  { key: 'Shortlisted', icon: Star },
+  { key: 'Pilot', icon: Rocket },
+];
+const stageKeys = stages.map(s => s.key);
 
 const badgeFor = {
   Submitted: 'badge-submitted',
@@ -38,7 +46,7 @@ export default function ApplicationsPage() {
         <div className="section-actions">
           <select className="filter-select" value={statusFilter} onChange={e => setStatusFilter(e.target.value)} data-testid="applications-status-filter">
             <option value="">All Statuses</option>
-            {stages.map(s => <option key={s} value={s}>{s}</option>)}
+            {stageKeys.map(s => <option key={s} value={s}>{s}</option>)}
           </select>
           <button className="btn btn-primary" onClick={() => navigate('/startup/marketplace')} data-testid="applications-browse-button">
             <Store size={16} /> Browse Challenges
@@ -55,6 +63,7 @@ export default function ApplicationsPage() {
         ].map(s => (
           <div
             key={s.label}
+            className="stat-chip"
             style={{
               background: 'var(--bg-card)', border: '1px solid var(--border-color)',
               borderRadius: 'var(--radius-md)', padding: '8px 16px',
@@ -80,7 +89,7 @@ export default function ApplicationsPage() {
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }} data-testid="applications-list">
           {rows.map(a => {
-            const stageIdx = Math.max(0, stages.indexOf(a.status));
+            const stageIdx = Math.max(0, stageKeys.indexOf(a.status));
             return (
               <div className="card" key={a.id} data-testid={`application-card-${a.id}`}>
                 <div className="challenge-card-header">
@@ -95,14 +104,27 @@ export default function ApplicationsPage() {
                 </div>
 
                 {/* Progress timeline */}
-                <div className="process-timeline" style={{ marginTop: 14 }}>
-                  {stages.map((s, i) => (
-                    <div className="timeline-step" key={s}>
-                      <div className={`timeline-dot ${i < stageIdx ? 'completed' : i === stageIdx ? 'active' : 'pending'}`} />
-                      <div className={`timeline-label ${i < stageIdx ? 'completed' : i === stageIdx ? 'active' : ''}`}>{s}</div>
-                      {i < stages.length - 1 && <div className={`timeline-connector ${i < stageIdx ? 'completed' : ''}`} />}
-                    </div>
-                  ))}
+                <div
+                  className="timeline-track"
+                  style={{ gridTemplateColumns: `repeat(${stages.length}, minmax(0, 1fr))`, marginTop: 16 }}
+                  data-testid={`application-timeline-${a.id}`}
+                >
+                  {stages.map(({ key, icon: StageIcon }, i) => {
+                    const state = i < stageIdx ? 'completed' : i === stageIdx ? 'active' : 'pending';
+                    return (
+                      <div
+                        key={key}
+                        className={`timeline-node ${i <= stageIdx ? 'seg-in-done' : ''} ${i < stageIdx ? 'seg-out-done' : ''}`}
+                        data-testid={`timeline-step-${a.id}-${key.toLowerCase()}`}
+                        title={key}
+                      >
+                        <div className={`timeline-node-dot ${state}`}>
+                          <StageIcon size={16} strokeWidth={2.2} />
+                        </div>
+                        <div className={`timeline-node-label ${state}`}>{key}</div>
+                      </div>
+                    );
+                  })}
                 </div>
 
                 {a.overallScore != null && (

@@ -8,10 +8,17 @@ import { expertIndustries, expertExpertiseTags, expertSectors, mentorshipStages 
 import { applyExpertFilters } from '../../lib/expertMatching';
 import ExpertCard from '../../components/ExpertCard';
 import {
-  Search, Sparkles, X, Loader2, CalendarCheck, CheckCircle2, ClipboardList, Info,
+  Search, Sparkles, X, Loader2, CalendarCheck, CheckCircle2, ClipboardList, Info, Send,
 } from 'lucide-react';
 
 const MY_STARTUP_ID = 'ST-003';
+
+// Icon shown inside each mentorship timeline circle.
+const mentorshipStageIcons = {
+  Requested: Send,
+  Scheduled: CalendarCheck,
+  Completed: CheckCircle2,
+};
 
 /** Active engagements (applications + pilots) that can receive mentorship. */
 function useMyEngagements(proposals) {
@@ -281,14 +288,27 @@ export default function ExpertNetworkPage() {
                   </span>
                 </div>
 
-                <div className="process-timeline" style={{ marginTop: 14 }}>
-                  {mentorshipStages.map((s, i) => (
-                    <div className="timeline-step" key={s}>
-                      <div className={`timeline-dot ${i < stageIdx ? 'completed' : i === stageIdx ? 'active' : 'pending'}`} />
-                      <div className={`timeline-label ${i < stageIdx ? 'completed' : i === stageIdx ? 'active' : ''}`}>{s}</div>
-                      {i < mentorshipStages.length - 1 && <div className={`timeline-connector ${i < stageIdx ? 'completed' : ''}`} />}
-                    </div>
-                  ))}
+                <div
+                  className="timeline-track"
+                  style={{ gridTemplateColumns: `repeat(${mentorshipStages.length}, minmax(0, 1fr))`, marginTop: 16 }}
+                  data-testid={`mentorship-timeline-${m.id}`}
+                >
+                  {mentorshipStages.map((s, i) => {
+                    const StageIcon = mentorshipStageIcons[s];
+                    const state = i < stageIdx ? 'completed' : i === stageIdx ? 'active' : 'pending';
+                    return (
+                      <div
+                        key={s}
+                        className={`timeline-node ${i <= stageIdx ? 'seg-in-done' : ''} ${i < stageIdx ? 'seg-out-done' : ''}`}
+                        title={s}
+                      >
+                        <div className={`timeline-node-dot ${state}`}>
+                          <StageIcon size={16} strokeWidth={2.2} />
+                        </div>
+                        <div className={`timeline-node-label ${state}`}>{s}</div>
+                      </div>
+                    );
+                  })}
                 </div>
 
                 <div style={{ marginTop: 14, fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.6 }}>

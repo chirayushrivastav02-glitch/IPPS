@@ -32,6 +32,18 @@ Connects startups on an active application/pilot with fictional domain experts.
   Scheduled → Completed → Mentorship Outcomes (Key Advice, Recommended Actions,
   Expected Impact, Next Steps). No messaging/video/external integrations.
 
+## Interaction & polish layer
+Appended at the end of `frontend/src/index.css` ("INTERACTION POLISH + TIMELINE
+ALIGNMENT"): 200–300ms hover lifts on `.card/.kpi-card/.challenge-card`, buttons,
+sidebar items and tags (with `prefers-reduced-motion` opt-out), overflow guards,
+branding subtitle sizing so "Innovation Procurement Platform" never crops, and a
+grid-based `.timeline-track / .timeline-node` timeline (dots share one centre
+line, connectors drawn as node ::before/::after at the dot centre, labels centred
+under each dot). Stage icons: Submitted=FileText, Screening=SearchCheck,
+Evaluation=ClipboardList, Shortlisted=Star, Pilot=Rocket; mentorship stages use
+Send / CalendarCheck / CheckCircle2. The old `.process-timeline` classes are
+unused but left in place.
+
 ## Routing (frontend/src/App.tsx — BrowserRouter lives in main.tsx)
 - `/` LandingPage, `/login` LoginPage (role picker)
 - Government (`GovernmentLayout`): `/gov/dashboard`, `/gov/challenges`,
